@@ -1,0 +1,6 @@
+module TDJSON [system][extern_c] {
+ header "include/td/telegram/td_json_client.h"
+ header "include/td/telegram/td_log.h"
+ export *
+}
+
