@@ -7,14 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B30C1CA52090E96A000F36F3 /* TlObject.h in Headers */ = {isa = PBXBuildFile; fileRef = B30C1C9C2090E96A000F36F3 /* TlObject.h */; };
-		B30C1CA62090E96A000F36F3 /* tdjson_export.h in Headers */ = {isa = PBXBuildFile; fileRef = B30C1C9E2090E96A000F36F3 /* tdjson_export.h */; };
-		B30C1CA72090E96A000F36F3 /* td_json_client.h in Headers */ = {isa = PBXBuildFile; fileRef = B30C1C9F2090E96A000F36F3 /* td_json_client.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B30C1CA82090E96A000F36F3 /* Client.h in Headers */ = {isa = PBXBuildFile; fileRef = B30C1CA02090E96A000F36F3 /* Client.h */; };
-		B30C1CA92090E96A000F36F3 /* td_api.h in Headers */ = {isa = PBXBuildFile; fileRef = B30C1CA12090E96A000F36F3 /* td_api.h */; };
-		B30C1CAA2090E96A000F36F3 /* td_log.h in Headers */ = {isa = PBXBuildFile; fileRef = B30C1CA22090E96A000F36F3 /* td_log.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B30C1CAB2090E96A000F36F3 /* td_api.hpp in Headers */ = {isa = PBXBuildFile; fileRef = B30C1CA32090E96A000F36F3 /* td_api.hpp */; };
-		B30C1CAC2090E96A000F36F3 /* Log.h in Headers */ = {isa = PBXBuildFile; fileRef = B30C1CA42090E96A000F36F3 /* Log.h */; };
+		B30C1CAE2090EC67000F36F3 /* td_json_client.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30C1CAD2090EC67000F36F3 /* td_json_client.swift */; };
 		B3474A1B2090D798000635C3 /* TDJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B3474A192090D798000635C3 /* TDJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3474A2D2090D808000635C3 /* libtdutils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A222090D808000635C3 /* libtdutils.a */; };
 		B3474A2E2090D808000635C3 /* libtdactor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A232090D808000635C3 /* libtdactor.a */; };
@@ -29,17 +22,12 @@
 		B3474A372090D808000635C3 /* libtdjson_private.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A2C2090D808000635C3 /* libtdjson_private.a */; };
 		B3474A392090D817000635C3 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A382090D817000635C3 /* libc++.tbd */; };
 		B3474A3B2090D81E000635C3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A3A2090D81E000635C3 /* libz.tbd */; };
+		B39A522A2090F29E001C89A2 /* td_log.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39A52292090F29E001C89A2 /* td_log.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B30C1C9C2090E96A000F36F3 /* TlObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TlObject.h; sourceTree = "<group>"; };
-		B30C1C9E2090E96A000F36F3 /* tdjson_export.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tdjson_export.h; sourceTree = "<group>"; };
-		B30C1C9F2090E96A000F36F3 /* td_json_client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = td_json_client.h; sourceTree = "<group>"; };
-		B30C1CA02090E96A000F36F3 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
-		B30C1CA12090E96A000F36F3 /* td_api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = td_api.h; sourceTree = "<group>"; };
-		B30C1CA22090E96A000F36F3 /* td_log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = td_log.h; sourceTree = "<group>"; };
-		B30C1CA32090E96A000F36F3 /* td_api.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = td_api.hpp; sourceTree = "<group>"; };
-		B30C1CA42090E96A000F36F3 /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		B30C1CAD2090EC67000F36F3 /* td_json_client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = td_json_client.swift; sourceTree = "<group>"; };
+		B30C1CAF2090EE0A000F36F3 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = SOURCE_ROOT; };
 		B3474A162090D798000635C3 /* TDJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TDJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3474A192090D798000635C3 /* TDJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDJSON.h; sourceTree = "<group>"; };
 		B3474A1A2090D798000635C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,7 +44,7 @@
 		B3474A2C2090D808000635C3 /* libtdjson_private.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtdjson_private.a; path = lib/libtdjson_private.a; sourceTree = "<group>"; };
 		B3474A382090D817000635C3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		B3474A3A2090D81E000635C3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		B3474A3C2090D98F000635C3 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = SOURCE_ROOT; };
+		B39A52292090F29E001C89A2 /* td_log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = td_log.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,45 +71,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B30C1C992090E96A000F36F3 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				B30C1C9A2090E96A000F36F3 /* td */,
-			);
-			path = include;
-			sourceTree = SOURCE_ROOT;
-		};
-		B30C1C9A2090E96A000F36F3 /* td */ = {
-			isa = PBXGroup;
-			children = (
-				B30C1C9B2090E96A000F36F3 /* tl */,
-				B30C1C9D2090E96A000F36F3 /* telegram */,
-			);
-			path = td;
-			sourceTree = "<group>";
-		};
-		B30C1C9B2090E96A000F36F3 /* tl */ = {
-			isa = PBXGroup;
-			children = (
-				B30C1C9C2090E96A000F36F3 /* TlObject.h */,
-			);
-			path = tl;
-			sourceTree = "<group>";
-		};
-		B30C1C9D2090E96A000F36F3 /* telegram */ = {
-			isa = PBXGroup;
-			children = (
-				B30C1C9E2090E96A000F36F3 /* tdjson_export.h */,
-				B30C1C9F2090E96A000F36F3 /* td_json_client.h */,
-				B30C1CA02090E96A000F36F3 /* Client.h */,
-				B30C1CA12090E96A000F36F3 /* td_api.h */,
-				B30C1CA22090E96A000F36F3 /* td_log.h */,
-				B30C1CA32090E96A000F36F3 /* td_api.hpp */,
-				B30C1CA42090E96A000F36F3 /* Log.h */,
-			);
-			path = telegram;
-			sourceTree = "<group>";
-		};
 		B3474A0C2090D798000635C3 = {
 			isa = PBXGroup;
 			children = (
@@ -142,10 +91,11 @@
 		B3474A182090D798000635C3 /* TDJSON */ = {
 			isa = PBXGroup;
 			children = (
-				B30C1C992090E96A000F36F3 /* include */,
 				B3474A192090D798000635C3 /* TDJSON.h */,
+				B30C1CAD2090EC67000F36F3 /* td_json_client.swift */,
+				B39A52292090F29E001C89A2 /* td_log.swift */,
 				B3474A1A2090D798000635C3 /* Info.plist */,
-				B3474A3C2090D98F000635C3 /* module.modulemap */,
+				B30C1CAF2090EE0A000F36F3 /* module.modulemap */,
 			);
 			path = TDJSON;
 			sourceTree = "<group>";
@@ -177,15 +127,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B30C1CAC2090E96A000F36F3 /* Log.h in Headers */,
-				B30C1CAA2090E96A000F36F3 /* td_log.h in Headers */,
-				B30C1CA72090E96A000F36F3 /* td_json_client.h in Headers */,
-				B30C1CA62090E96A000F36F3 /* tdjson_export.h in Headers */,
 				B3474A1B2090D798000635C3 /* TDJSON.h in Headers */,
-				B30C1CAB2090E96A000F36F3 /* td_api.hpp in Headers */,
-				B30C1CA92090E96A000F36F3 /* td_api.h in Headers */,
-				B30C1CA52090E96A000F36F3 /* TlObject.h in Headers */,
-				B30C1CA82090E96A000F36F3 /* Client.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +164,7 @@
 				TargetAttributes = {
 					B3474A152090D798000635C3 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -274,6 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B39A522A2090F29E001C89A2 /* td_log.swift in Sources */,
+				B30C1CAE2090EC67000F36F3 /* td_json_client.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +349,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -424,11 +371,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
 				);
-				MODULEMAP_FILE = "$(SRCROOT)/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leomehlig.TDJSON;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/**";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -438,6 +386,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
@@ -458,11 +408,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/lib",
 				);
-				MODULEMAP_FILE = "$(SRCROOT)/module.modulemap";
 				PRODUCT_BUNDLE_IDENTIFIER = com.leomehlig.TDJSON;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "${SRCROOT}/**";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
