@@ -1,0 +1,23 @@
+language: objective-c
+osx_image: xcode9.3
+xcode_project: TDJSON.xcodeproj
+xcode_scheme: TDJSON
+xcode_sdk: iphonesimulator11.3
+env:
+  global:
+  - FRAMEWORK_NAME=TDJSON
+before_install:
+- brew update
+- brew outdated carthage || brew upgrade carthage
+before_deploy:
+- carthage build --no-skip-current
+- carthage archive $FRAMEWORK_NAME
+deploy:
+  provider: releases
+  api_key:
+    secure: idqUBYRAilsqLMrEqkzdPOj9nzPaQupN8nkGj5F3IEJn5QR8YzPUH72qfgT7yVvvjYdzej0y1A4TfWZ5F2wuLaUyR2aQMnl+a4bgPvTdosqcRgGLZEWcokZpSdLLh/qXbWb9NGeagF2wWVw9e8t8+lbFD6rG9H2PXpe+VEul9rXGLW70ynuQMQE6Ujag11Wjy+zE6QeyzWq+zGMxoYawXa325ibPiB2Jq/ABjRd0UETNnYo5OZQAvSd0sjWjBhxBc2GW/Kz/R49K5A0do1g45GY1uYgJDCmHtiv/rYHiC2Qj11RuE/x2mFSt1XAxCDHvBSmmX9QVPYZloeJGpvE8mtFrG5j2QKVbBp4TzhULg0i/yRlbJvgwSMofNRW+bMVcEHpcVrLt3K1U+4fCxET4eafWRFn0HkMUYvEaKH6sGkd68Nclvrt/NyDiCi7ggAP15X6pPEez5oZI1rQpyks73sT3k9EWry0vOnTj8aDCwjGyDnViGItYZpd4w54i/bcRfGfnzUTZL2/lizMOgFVLNDfQd3VVLC5RLomBxecDW3/xPjPOQAfEoZ6rAlgQHYqZDe4RHssGICjd4/zqWsurTidXTfodlv7LO2BMhDxSP/cLjFZofNiVRGzPpFrbXrPmUXA3K7QU96EEOLMAVv+Qz86RxZSpbb585K//HmdMPro=
+  file: "$FRAMEWORK_NAME.framework.zip"
+  skip_cleanup: true
+  on:
+    repo: leoMehlig/TDJSON
+    tags: true
