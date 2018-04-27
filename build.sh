@@ -44,13 +44,13 @@ do
   if [[ $platform = "macOS" ]]; then
     build="build-${platform}"
     install="install-${platform}"
-    # rm -rf $build
-    # mkdir -p $build
-    # mkdir -p $install
-    # cd $build
-    # cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}
-    # make -j3 install || exit
-    # cd ..
+    rm -rf $build
+    mkdir -p $build
+    mkdir -p $install
+    cd $build
+    cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}
+    make -j3 install || exit
+    cd ..
   else
     simulators="0 1"
     for simulator in $simulators;
