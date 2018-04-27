@@ -8,7 +8,7 @@ setup_git() {
 commit_website_files() {
   git checkout master
   git pull
-  git commit * -m CI\ commit\
+  git commit * -m $TRAVIS_TAG\ release
 }
 
 upload_files() {
