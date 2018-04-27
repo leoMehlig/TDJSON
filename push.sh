@@ -6,13 +6,14 @@ setup_git() {
 }
 
 commit_website_files() {
-  git checkout -b master
+  git checkout master
+  git pull
   git commit * -m CI\ commit\
 }
 
 upload_files() {
-  git remote add origin git@github.com:leoMehlig/TDJSON.git > /dev/null 2>&1
-  git push --quiet --set-upstream origin master
+  git remote add origin-master git@github.com:leoMehlig/TDJSON.git > /dev/null 2>&1
+  git push origin-master master
 }
 
 setup_git
