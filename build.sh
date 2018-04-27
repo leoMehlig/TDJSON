@@ -27,7 +27,7 @@ rm -rf build
 mkdir -p build
 cd build
 
-platforms="iOS"
+platforms="macOS iOS"
 for platform in $platforms;
 do
   echo "Platform = ${platform} Simulator = ${simulator}"
