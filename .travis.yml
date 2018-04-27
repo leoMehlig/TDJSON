@@ -6,7 +6,7 @@ env:
 before_deploy:
 - brew update
 - brew outdated carthage || brew upgrade carthage
-- sh build.sh
+# - sh build.sh
 - carthage build --no-skip-current
 - carthage archive $FRAMEWORK_NAME
 deploy:
