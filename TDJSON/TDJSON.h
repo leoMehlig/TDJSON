@@ -1,11 +1,3 @@
-//
-//  TDJSON.h
-//  TDJSON
-//
-//  Created by Leo Mehlig on 25.04.18.
-//  Copyright © 2018 Leo Mehlig. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for TDJSON.
