@@ -9,7 +9,7 @@ commit_website_files() {
   git checkout master
   git pull
   git add *
-  git commit -m $TRAVIS_TAG\ release
+  git commit -m $TRAVIS_TAG\ release\ \[skip\ ci\]
 }
 
 upload_files() {

@@ -11,8 +11,7 @@ script:
 # - carthage build --no-skip-current --verbose
 # - carthage archive $FRAMEWORK_NAME
 - touch test.txt
-- echo "Hello world" >> test.txt
-- bash push.sh
+- echo "Hello world123" >> test.txt
 deploy:
   # - provider: releases
   #   api_key:
@@ -24,11 +23,11 @@ deploy:
   #   on:
   #     repo: leoMehlig/TDJSON
   #     tags: true
-  # - provider: script
-  #   script: bash push.sh
-  #   skip_cleanup: true
-  #   on:
-  #     branch: master
+  - provider: script
+    script: bash push.sh
+    skip_cleanup: true
+    on:
+      branch: master
     # on:
     #   repo: leoMehlig/TDJSON
     #   tags: true
