@@ -9,12 +9,11 @@ commit_website_files() {
   git checkout master
   git pull
   git add *
-  git add test.text
   git commit -m $TRAVIS_TAG\ release
 }
 
 upload_files() {
-  git remote add origin-master https://ci-leoMehlig:$GITHUB_API_KEY@github.com:leoMehlig/TDJSON.git > /dev/null 2>&1
+  git remote add origin-master git@github.com:leoMehlig/TDJSON.git
   git push origin-master master
 }
 
