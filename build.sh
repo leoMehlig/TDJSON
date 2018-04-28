@@ -103,3 +103,8 @@ cp -r build/iOS/include include
 cp third_party/openssl/iOS/lib/* lib/
 
 cp td/td/generate/scheme/td_api.tl .
+
+rm -rf td
+rm -rf third_party
+rm -rf Python-Apple-Support
+rm -rf build
