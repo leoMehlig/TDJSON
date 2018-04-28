@@ -20,7 +20,9 @@ do
 done
 
 git clone https://github.com/tdlib/td
-
+cd td
+git checkout tags/$TRAVIS_TAG
+cd ..
 td_path=$(pwd)/td
 
 rm -rf build
