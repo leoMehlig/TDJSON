@@ -25,6 +25,7 @@ deploy:
   #     tags: true
   - provider: script
     script: bash push.sh
+    skip_cleanup: true
     on:
       branch: master
     # on:

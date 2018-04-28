@@ -14,7 +14,7 @@ commit_website_files() {
 }
 
 upload_files() {
-  git remote add origin-master git@github.com:leoMehlig/TDJSON.git > /dev/null 2>&1
+  git remote add origin-master https://ci-leoMehlig:$GITHUB_API_KEY@github.com:leoMehlig/TDJSON.git > /dev/null 2>&1
   git push origin-master master
 }
 
