@@ -1,4 +1,4 @@
-#!/bin/sh
+!/bin/sh
 
 git clone https://github.com/pybee/Python-Apple-support
 cd Python-Apple-support
@@ -10,10 +10,10 @@ for platform in $platforms;
 do
   echo $platform
   cd Python-Apple-support
-  make OpenSSL-$platform | pv --line-mode -b --timer > /dev/null
+  make OpenSSL-$platform
   cd ..
   rm -rf third_party/openssl/$platform
-  mkdir -p third_party/openssl/$platform/lib 
+  mkdir -p third_party/openssl/$platform/lib
   cp ./Python-Apple-support/build/$platform/libcrypto.a third_party/openssl/$platform/lib/
   cp ./Python-Apple-support/build/$platform/libssl.a third_party/openssl/$platform/lib/
   cp -r ./Python-Apple-support/build/$platform/Support/OpenSSL/Headers/ third_party/openssl/$platform/include
@@ -50,8 +50,8 @@ do
     mkdir -p $build
     mkdir -p $install
     cd $build
-    cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install} | pv --line-mode -b --timer > /dev/null
-    make -j3 install | pv --line-mode -b --timer > /dev/null
+    cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}
+    make -j3 install || exit
     cd ..
   else
     simulators="0 1"
@@ -78,7 +78,7 @@ do
       mkdir -p $install
       cd $build
       cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install}
-      make -j3 install
+      make -j3 install || exit
       cd ..
     done
     mkdir -p $platform
