@@ -77,7 +77,7 @@ do
       mkdir -p $build
       mkdir -p $install
       cd $build
-      cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install}
+      cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=8.0 -DCMAKE_INSTALL_PREFIX=../${install}
       make -j3 install || exit
       cd ..
     done
