@@ -208,7 +208,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\npath=$SRCROOT/lib/libtdcore.a\nurl=\"https://www.dropbox.com/s/rj7cn6369y7yndk/libtdcore.a?dl=1\"\nif [ ! -f $path ]; then\n    echo \"Needs to download file\"\n    curl -kL $url -o $path\nelse\n    echo \"File is already downloaded\"\nfi";
+			shellScript = "#!/bin/bash\npath=$SRCROOT/lib/libtdcore.a\nurl=\"https://www.dropbox.com/s/rj7cn6369y7yndk/libtdcore.a?dl=1\"\nif [ ! -f $path ]; then\n    echo \"Needs to download file\"\n    curl -kL $url -o $path\nelse\n    echo \"File is already downloaded\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
