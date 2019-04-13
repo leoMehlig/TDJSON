@@ -4,9 +4,7 @@ env:
   global:
   - FRAMEWORK_NAME=TDJSON
 script:
-- brew update
-- brew outdated carthage || brew upgrade carthage
-- brew install pv
+- ./brew.sh
 - ./build.sh 
 - carthage build --no-skip-current --verbose
 - carthage archive $FRAMEWORK_NAME

@@ -8,6 +8,17 @@ fold_end() {
   echo -e "\ntravis_fold:end:$1\r"
 }
 
+show_progress() {
+  PID=$!
+  i=1
+  sp="/-\|"
+  echo -n ' '
+  while kill -0 $PID 2> /dev/null
+  do
+      printf "\b${sp:i++%${#sp}:1}"
+  done
+}
+
 fold_start openssl.1 "Checkout OpenSSL"
 
 git clone https://github.com/pybee/Python-Apple-support
@@ -24,7 +35,7 @@ do
   fold_start openssl.2 "Building OpenSSL for ${platform}"
   echo $platform
   cd Python-Apple-support
-  make OpenSSL-$platform
+  make OpenSSL-$platform > /dev/null & show_progress
   cd ..
   rm -rf third_party/openssl/$platform
   mkdir -p third_party/openssl/$platform/lib
@@ -34,12 +45,16 @@ do
   fold_end openssl.2
 done
 
+fold_start td_checkout "Checkout td at tag ${$TRAVIS_TAG}"
 
 git clone https://github.com/tdlib/td
 cd td
 git checkout tags/$TRAVIS_TAG
 # git checkout tags/v1.3.0
 cd ..
+
+fold_end td_checkout
+
 td_path=$(pwd)/td
 
 rm -rf build
@@ -49,9 +64,7 @@ cd build
 platforms="macOS iOS"
 for platform in $platforms;
 do
-  echo "Platform = ${platform} Simulator = ${simulator}"
   openssl_path=$(pwd)/../third_party/openssl/${platform}
-  echo "OpenSSL path = ${openssl_path}"
   openssl_crypto_library="${openssl_path}/lib/libcrypto.a"
   openssl_ssl_library="${openssl_path}/lib/libssl.a"
   options="$options -DOPENSSL_FOUND=1"
@@ -63,19 +76,22 @@ do
   # options="$options -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang"
   # options="$options -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++"
   if [[ $platform = "macOS" ]]; then
+    fold_start td_build "Building td for ${platform}"
     build="build-${platform}"
     install="install-${platform}"
     rm -rf $build
     mkdir -p $build
     mkdir -p $install
     cd $build
-    cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}
-    make -j3 install || exit
+    cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}  > /dev/null & show_progress
+    make -j3 install || exit > /dev/null & show_progress
     cd ..
+    fold_end td_build
   else
     simulators="0 1"
     for simulator in $simulators;
     do
+      fold_start td_build "Building td for ${platform} (sim=${simulator})"
       build="build-${platform}"
       install="install-${platform}"
       if [[ $simulator = "1" ]]; then
@@ -96,24 +112,28 @@ do
       mkdir -p $build
       mkdir -p $install
       cd $build
-      cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install}
-      make -j3 install || exit
+      cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install} > /dev/null & show_progress
+      make -j3 install || exit > /dev/null & show_progress
       cd ..
+      fold_end td_build
     done
+
+    fold_start td_lipo "Lipo td for ${platform}"
     mkdir -p $platform
     libs="libtdclient.a libtdsqlite.a libtdcore.a libtdactor.a libtdutils.a libtdjson_private.a libtddb.a libtdjson_static.a libtdnet.a"
     for lib_path in  $libs;
     do
         lib="install-${platform}/lib/${lib_path}"
         lib_simulator="install-${platform}-simulator/lib/${lib_path}"
-        echo "lipo -create $lib $lib_simulator -o $platform/$lib_path"
         lipo -create $lib $lib_simulator -o $platform/$lib_path
     done
+    fold_end td_lipo
   fi
 
+  fold_start td_copy "Copying libs to destination for ${platform}"
   mkdir -p $platform/include
-  echo "rsync --recursive ${install}/include/ ${platform}/include/"
   rsync --recursive ${install}/include/ ${platform}/include/
+  fold_end td_copy
 done
 
 cd ..
