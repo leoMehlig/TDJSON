@@ -1,8 +1,9 @@
-!/bin/sh
+#!/bin/sh
 
 git clone https://github.com/pybee/Python-Apple-support
 cd Python-Apple-support
 git checkout 2.7
+git checkout 60b990128d5f1f04c336ff66594574515ab56604
 cd ..
 
 platforms="macOS iOS"
@@ -19,9 +20,11 @@ do
   cp -r ./Python-Apple-support/build/$platform/Support/OpenSSL/Headers/ third_party/openssl/$platform/include
 done
 
+
 git clone https://github.com/tdlib/td
 cd td
 git checkout tags/$TRAVIS_TAG
+# git checkout tags/v1.3.0
 cd ..
 td_path=$(pwd)/td
 
@@ -39,10 +42,12 @@ do
   openssl_ssl_library="${openssl_path}/lib/libssl.a"
   options="$options -DOPENSSL_FOUND=1"
   options="$options -DOPENSSL_CRYPTO_LIBRARY=${openssl_crypto_library}"
-  #options="$options -DOPENSSL_SSL_LIBRARY=${openssl_ssl_library}"
+  # options="$options -OPENSSL_ROOT_DIR=${openssl_ssl_library}"
   options="$options -DOPENSSL_INCLUDE_DIR=${openssl_path}/include"
-  options="$options -DOPENSSL_LIBRARIES=${openssl_crypto_library};${openssl_ssl_library}"
+  options="$options -DOPENSSL_LIBRARIES=${openssl_ssl_library}"
   options="$options -DCMAKE_BUILD_TYPE=Release"
+  # options="$options -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang"
+  # options="$options -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++"
   if [[ $platform = "macOS" ]]; then
     build="build-${platform}"
     install="install-${platform}"
@@ -77,7 +82,7 @@ do
       mkdir -p $build
       mkdir -p $install
       cd $build
-      cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=9.0 -DCMAKE_INSTALL_PREFIX=../${install}
+      cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install}
       make -j3 install || exit
       cd ..
     done
@@ -106,7 +111,7 @@ cp third_party/openssl/iOS/lib/* lib/
 
 cp td/td/generate/scheme/td_api.tl .
 
-rm -rf td
-rm -rf third_party
-rm -rf Python-Apple-Support
-rm -rf build
+# rm -rf td
+# rm -rf third_party
+# rm -rf Python-Apple-Support
+# rm -rf build
