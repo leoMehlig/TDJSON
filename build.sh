@@ -1,14 +1,27 @@
 #!/bin/sh
 
+fold_start() {
+  echo -e "travis_fold:start:$1\033[33;1m$2\033[0m"
+}
+
+fold_end() {
+  echo -e "\ntravis_fold:end:$1\r"
+}
+
+fold_start openssl.1 "Checkout OpenSSL"
+
 git clone https://github.com/pybee/Python-Apple-support
 cd Python-Apple-support
 git checkout 2.7
 git checkout 60b990128d5f1f04c336ff66594574515ab56604
 cd ..
 
+fold_end openssl.1
+
 platforms="macOS iOS"
 for platform in $platforms;
 do
+  fold_start openssl.2 "Building OpenSSL for ${platform}"
   echo $platform
   cd Python-Apple-support
   make OpenSSL-$platform
@@ -18,6 +31,7 @@ do
   cp ./Python-Apple-support/build/$platform/libcrypto.a third_party/openssl/$platform/lib/
   cp ./Python-Apple-support/build/$platform/libssl.a third_party/openssl/$platform/lib/
   cp -r ./Python-Apple-support/build/$platform/Support/OpenSSL/Headers/ third_party/openssl/$platform/include
+  fold_end openssl.2
 done
 
 
@@ -101,6 +115,7 @@ do
   echo "rsync --recursive ${install}/include/ ${platform}/include/"
   rsync --recursive ${install}/include/ ${platform}/include/
 done
+
 cd ..
 
 rm -rf lib/*
