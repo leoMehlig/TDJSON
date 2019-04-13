@@ -35,7 +35,7 @@ do
   fold_start openssl.2 "Building OpenSSL for ${platform}"
   echo $platform
   cd Python-Apple-support
-  make OpenSSL-$platform > /dev/null & show_progress
+  make OpenSSL-$platform &> /dev/null & show_progress
   cd ..
   rm -rf third_party/openssl/$platform
   mkdir -p third_party/openssl/$platform/lib
