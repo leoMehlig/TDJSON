@@ -16,7 +16,7 @@ show_progress() {
   while kill -0 $PID 2> /dev/null
   do
       printf "\b${sp:i++%${#sp}:1}"
-      sleep 10
+      sleep 300
   done
 }
 
