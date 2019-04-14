@@ -84,8 +84,9 @@ do
     mkdir -p $build
     mkdir -p $install
     cd $build
-    cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}  > /dev/null & show_progress
-    make -j3 install || exit &> /dev/null & show_progress
+    echp "cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}"
+    cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install} > /dev/null & show_progress
+    make -j3 install > /dev/null || exit  & show_progress
     cd ..
     fold_end td_build
   else
@@ -113,8 +114,9 @@ do
       mkdir -p $build
       mkdir -p $install
       cd $build
+      echo "cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install}"
       cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install} > /dev/null & show_progress
-      make -j3 install || exit &> /dev/null & show_progress
+      make -j3 install > /dev/null || exit  & show_progress
       cd ..
       fold_end td_build
     done
