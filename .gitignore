@@ -68,7 +68,7 @@ fastlane/test_output
 .DS_Store
 /lib/libtdcore.a
 /Python-Apple-support
-/third_party
+
 /td
 /TDJSON.framework.zip
 /.vscode

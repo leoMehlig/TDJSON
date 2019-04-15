@@ -20,16 +20,6 @@ show_progress() {
   done
 }
 
-fold_start openssl.1 "Checkout OpenSSL"
-
-git clone https://github.com/pybee/Python-Apple-support
-cd Python-Apple-support
-git checkout 2.7
-git checkout 60b990128d5f1f04c336ff66594574515ab56604
-cd ..
-
-fold_end openssl.1
-
 platforms="macOS iOS"
 for platform in $platforms;
 do
