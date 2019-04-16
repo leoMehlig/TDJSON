@@ -18,7 +18,7 @@ show_progress() {
       printf "\b${sp:i++%${#sp}:1}"
       sleep 60
   done
-# }
+}
 
 # platforms="macOS iOS"
 # for platform in $platforms;
