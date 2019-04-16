@@ -20,22 +20,6 @@ show_progress() {
   done
 }
 
-# platforms="macOS iOS"
-# for platform in $platforms;
-# do
-#   fold_start openssl.2 "Building OpenSSL for ${platform}"
-#   echo $platform
-#   cd Python-Apple-support
-#   make OpenSSL-$platform &> /dev/null & show_progress
-#   cd ..
-#   rm -rf third_party/openssl/$platform
-#   mkdir -p third_party/openssl/$platform/lib
-#   cp ./Python-Apple-support/build/$platform/libcrypto.a third_party/openssl/$platform/lib/
-#   cp ./Python-Apple-support/build/$platform/libssl.a third_party/openssl/$platform/lib/
-#   cp -r ./Python-Apple-support/build/$platform/Support/OpenSSL/Headers/ third_party/openssl/$platform/include
-#   fold_end openssl.2
-# done
-
 fold_start td_checkout "Checkout td at tag ${$TRAVIS_TAG}"
 
 git clone https://github.com/tdlib/td
@@ -74,9 +58,9 @@ do
     mkdir -p $build
     mkdir -p $install
     cd $build
-    echp "cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}"
+    echo "cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}"
     cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}
-    make -j3 install || exit
+    cmake --build . --target prepare_cross_compiling
     cd ..
     fold_end td_build
   else
