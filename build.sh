@@ -16,25 +16,25 @@ show_progress() {
   while kill -0 $PID 2> /dev/null
   do
       printf "\b${sp:i++%${#sp}:1}"
-      sleep 300
+      sleep 60
   done
-}
+# }
 
-platforms="macOS iOS"
-for platform in $platforms;
-do
-  fold_start openssl.2 "Building OpenSSL for ${platform}"
-  echo $platform
-  cd Python-Apple-support
-  make OpenSSL-$platform &> /dev/null & show_progress
-  cd ..
-  rm -rf third_party/openssl/$platform
-  mkdir -p third_party/openssl/$platform/lib
-  cp ./Python-Apple-support/build/$platform/libcrypto.a third_party/openssl/$platform/lib/
-  cp ./Python-Apple-support/build/$platform/libssl.a third_party/openssl/$platform/lib/
-  cp -r ./Python-Apple-support/build/$platform/Support/OpenSSL/Headers/ third_party/openssl/$platform/include
-  fold_end openssl.2
-done
+# platforms="macOS iOS"
+# for platform in $platforms;
+# do
+#   fold_start openssl.2 "Building OpenSSL for ${platform}"
+#   echo $platform
+#   cd Python-Apple-support
+#   make OpenSSL-$platform &> /dev/null & show_progress
+#   cd ..
+#   rm -rf third_party/openssl/$platform
+#   mkdir -p third_party/openssl/$platform/lib
+#   cp ./Python-Apple-support/build/$platform/libcrypto.a third_party/openssl/$platform/lib/
+#   cp ./Python-Apple-support/build/$platform/libssl.a third_party/openssl/$platform/lib/
+#   cp -r ./Python-Apple-support/build/$platform/Support/OpenSSL/Headers/ third_party/openssl/$platform/include
+#   fold_end openssl.2
+# done
 
 fold_start td_checkout "Checkout td at tag ${$TRAVIS_TAG}"
 
@@ -75,8 +75,8 @@ do
     mkdir -p $install
     cd $build
     echp "cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}"
-    cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install} > /dev/null & show_progress
-    make -j3 install > /dev/null || exit  & show_progress
+    cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}
+    make -j3 install || exit
     cd ..
     fold_end td_build
   else
@@ -105,8 +105,8 @@ do
       mkdir -p $install
       cd $build
       echo "cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install}"
-      cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install} > /dev/null & show_progress
-      make -j3 install > /dev/null || exit  & show_progress
+      cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install}
+      make -j3 install || exit
       cd ..
       fold_end td_build
     done
