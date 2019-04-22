@@ -32,6 +32,8 @@ fold_end td_checkout
 
 td_path=$(pwd)/td
 
+build_path=$(pwd)/build
+
 rm -rf build
 mkdir -p build
 cd build
@@ -55,6 +57,7 @@ set_options() {
 make_lipo() {
   platform=$0
   fold_start td_lipo "Lipo td for ${platform}"
+  cd build_path
   mkdir -p $platform
   libs="libtdclient.a libtdsqlite.a libtdcore.a libtdactor.a libtdutils.a libtdjson_private.a libtddb.a libtdjson_static.a libtdnet.a"
   for lib_path in  $libs;
