@@ -128,7 +128,7 @@ build_ios() {
 
 build_macos
 
-build_ios "0" "iOS" & build_ios "1" "iOS" && fg 
+build_ios "0" "iOS" & build_ios "1" "iOS" & wait
 
 make_lipo "iOS"
 copy_installs "iOS"
