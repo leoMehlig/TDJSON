@@ -55,9 +55,16 @@ public typealias td_log_fatal_error_callback = (String) -> Void
  *                      Pass NULL to remove the callback.
  */
 
-//public func td_set_log_fatal_error_callback(_ callback: @escaping td_log_fatal_error_callback) {
+public func td_set_log_fatal_error_callback(_ callback: @escaping td_log_fatal_error_callback) {
 //    let swiftCallback: @convention(c) (UnsafePointer<Int8>?) -> Void = {
 //        callback(String(cString: $0!))
 //    }
-//    libtdjson.td_set_log_fatal_error_callback(swiftCallback)
-//}
+
+    libtdjson.td_set_log_fatal_error_callback {
+        if let ptr = $0 {
+            let str = String(cString: ptr)
+            print(str)
+        }
+
+    }
+}

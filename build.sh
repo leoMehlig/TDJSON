@@ -55,9 +55,9 @@ set_options() {
 }
 
 make_lipo() {
-  platform=$0
+  platform=$1
   fold_start td_lipo "Lipo td for ${platform}"
-  cd build_path
+  cd $build_path
   mkdir -p $platform
   libs="libtdclient.a libtdsqlite.a libtdcore.a libtdactor.a libtdutils.a libtdjson_private.a libtddb.a libtdjson_static.a libtdnet.a"
   for lib_path in  $libs;
@@ -70,7 +70,7 @@ make_lipo() {
 }
 
 copy_installs() {
-  $platform = $1
+  platform = $1
   fold_start td_copy "Copying libs to destination for ${platform}"
   mkdir -p $platform/include
   rsync --recursive install-${platform}/include/ ${platform}/include/
@@ -90,7 +90,7 @@ build_macos() {
   echo "cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}"
   cmake $td_path $options -DCMAKE_INSTALL_PREFIX=../${install}
   # cmake --build . --target prepare_cross_compiling
-  make -j3 install || exit
+  make -j4 install || exit
   cd ..
   fold_end td_build
   copy_installs "macOS"
@@ -124,14 +124,15 @@ build_ios() {
   cd $build
   echo "cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install}"
   cmake $td_path $options -DIOS_PLATFORM=${ios_platform} -DCMAKE_TOOLCHAIN_FILE=${td_path}/CMake/iOS.cmake -DIOS_DEPLOYMENT_TARGET=10.0 -DCMAKE_INSTALL_PREFIX=../${install}
-  make -j3 install || exit
+  make -j4 install || exit
   cd ..
   fold_end td_build
 }
 
-build_macos
+# build_macos
 
-build_ios "0" "iOS" & build_ios "1" "iOS" & wait
+build_ios "0" "iOS" # &  & wait
+build_ios "1" "iOS"
 
 make_lipo "iOS"
 copy_installs "iOS"

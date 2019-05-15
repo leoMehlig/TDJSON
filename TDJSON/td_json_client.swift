@@ -64,7 +64,7 @@ public func td_json_client_send(client: UnsafeMutableRawPointer, request: String
 ///   - client: The client.
 ///   - timeout: Maximum number of seconds allowed for this function to wait for new data.
 /// - Returns: JSON-serialized null-terminated incoming update or request response. May be NULL if the timeout expires.
-public func td_json_client_receive(client: UnsafeMutableRawPointer, timeout: TimeInterval) -> String? {
+public func td_json_client_receive(client: UnsafeMutableRawPointer, timeout: Double) -> String? {
     if let response = libtdjson.td_json_client_receive(client, timeout) {
         return String(cString: response)
     }

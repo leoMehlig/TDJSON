@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B30C1CAE2090EC67000F36F3 /* td_json_client.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30C1CAD2090EC67000F36F3 /* td_json_client.swift */; };
-		B3474A1B2090D798000635C3 /* TDJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B3474A192090D798000635C3 /* TDJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3474A2D2090D808000635C3 /* libtdutils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A222090D808000635C3 /* libtdutils.a */; };
 		B3474A2E2090D808000635C3 /* libtdactor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A232090D808000635C3 /* libtdactor.a */; };
 		B3474A2F2090D808000635C3 /* libtdcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A242090D808000635C3 /* libtdcore.a */; };
@@ -28,8 +27,8 @@
 /* Begin PBXFileReference section */
 		B30C1CAD2090EC67000F36F3 /* td_json_client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = td_json_client.swift; sourceTree = "<group>"; };
 		B30C1CAF2090EE0A000F36F3 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = SOURCE_ROOT; };
+		B318C840228CAFC9009C4FD7 /* TDJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDJSON.h; sourceTree = "<group>"; };
 		B3474A162090D798000635C3 /* TDJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TDJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3474A192090D798000635C3 /* TDJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TDJSON.h; sourceTree = "<group>"; };
 		B3474A1A2090D798000635C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3474A222090D808000635C3 /* libtdutils.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtdutils.a; path = lib/libtdutils.a; sourceTree = "<group>"; };
 		B3474A232090D808000635C3 /* libtdactor.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtdactor.a; path = lib/libtdactor.a; sourceTree = "<group>"; };
@@ -91,7 +90,7 @@
 		B3474A182090D798000635C3 /* TDJSON */ = {
 			isa = PBXGroup;
 			children = (
-				B3474A192090D798000635C3 /* TDJSON.h */,
+				B318C840228CAFC9009C4FD7 /* TDJSON.h */,
 				B30C1CAD2090EC67000F36F3 /* td_json_client.swift */,
 				B39A52292090F29E001C89A2 /* td_log.swift */,
 				B3474A1A2090D798000635C3 /* Info.plist */,
@@ -127,7 +126,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3474A1B2090D798000635C3 /* TDJSON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,8 +229,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -279,7 +277,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -294,8 +292,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -353,7 +351,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -361,7 +359,7 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/include/**";
 				INFOPLIST_FILE = TDJSON/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -377,7 +375,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/**";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -390,7 +388,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -398,7 +396,7 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/include/**";
 				INFOPLIST_FILE = TDJSON/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -413,7 +411,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "${SRCROOT}/**";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
