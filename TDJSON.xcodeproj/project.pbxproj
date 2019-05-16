@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B30C1CAE2090EC67000F36F3 /* td_json_client.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30C1CAD2090EC67000F36F3 /* td_json_client.swift */; };
+		B318C842228D6F0B009C4FD7 /* TDJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = B318C840228CAFC9009C4FD7 /* TDJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3474A2D2090D808000635C3 /* libtdutils.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A222090D808000635C3 /* libtdutils.a */; };
 		B3474A2E2090D808000635C3 /* libtdactor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A232090D808000635C3 /* libtdactor.a */; };
 		B3474A2F2090D808000635C3 /* libtdcore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B3474A242090D808000635C3 /* libtdcore.a */; };
@@ -126,6 +127,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B318C842228D6F0B009C4FD7 /* TDJSON.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,7 +353,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -388,7 +390,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
