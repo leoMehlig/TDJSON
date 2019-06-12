@@ -11,6 +11,7 @@ import libtdjson
 ///
 /// - Parameter file_path: Null-terminated path to a file where the internal TDLib log will be written. Use an empty path to switch back to the default logging behaviour.
 /// - Returns: True on success, or false otherwise, i.e. if the file can't be opened for writing.
+@available(*, deprecated, message: "Use the SetLogStream json function instead")
 public func td_set_log_file_path(_ file_path: String) -> Bool {
     return libtdjson.td_set_log_file_path(file_path) == 1
 }
@@ -19,6 +20,7 @@ public func td_set_log_file_path(_ file_path: String) -> Bool {
 /// Unused if log is not written to a file. Defaults to 10 MB.
 ///
 /// - Parameter max_file_size: Maximum size of the file to where the internal TDLib log is written before the file will be auto-rotated. Should be positive.
+@available(*, deprecated, message: "Use the SetLogStream json function instead")
 public func td_set_log_max_file_size(_ max_file_size: Int64) {
     libtdjson.td_set_log_max_file_size(max_file_size)
 }
@@ -34,6 +36,7 @@ public func td_set_log_max_file_size(_ max_file_size: Int64) {
 ///                                 value 4 corresponds to debug,
 ///                                 value 5 corresponds to verbose debug,
 ///                                 value greater than 5 and up to 1024 can be used to enable even more logging.
+@available(*, deprecated, message: "Use the SetLogLevel json function instead")
 public func td_set_log_verbosity_level(_ new_verbosity_level: Int32) {
     libtdjson.td_set_log_verbosity_level(new_verbosity_level)
 }
@@ -43,6 +46,7 @@ public func td_set_log_verbosity_level(_ new_verbosity_level: Int32) {
 /// - Parameter error_message: Null-terminated string with a description of a happened fatal error.
 public typealias td_log_fatal_error_callback = (String) -> Void
 
+private var error_callback: td_log_fatal_error_callback = { _ in }
 
 //TODO: Added error callback function.
 /**
@@ -60,10 +64,12 @@ public func td_set_log_fatal_error_callback(_ callback: @escaping td_log_fatal_e
 //        callback(String(cString: $0!))
 //    }
 
+    error_callback = callback
     libtdjson.td_set_log_fatal_error_callback {
         if let ptr = $0 {
             let str = String(cString: ptr)
             print(str)
+            error_callback(str)
         }
 
     }
