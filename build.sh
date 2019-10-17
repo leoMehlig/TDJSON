@@ -24,8 +24,8 @@ fold_start td_checkout "Checkout td at tag ${$TRAVIS_TAG}"
 
 git clone https://github.com/tdlib/td
 cd td
-git checkout tags/$TRAVIS_TAG
-# git checkout tags/v1.3.0
+# git checkout tags/$TRAVIS_TAG
+git checkout tags/v1.5.0
 cd ..
 
 fold_end td_checkout
@@ -46,9 +46,11 @@ set_options() {
   openssl_ssl_library="${openssl_path}/lib/libssl.a"
   options="$options -DOPENSSL_FOUND=1"
   options="$options -DOPENSSL_CRYPTO_LIBRARY=${openssl_crypto_library}"
+  # options="$options -OPENSSL_ROOT_DIR='/usr/local/opt/openssl/'" # /${openssl_ssl_library}"
   # options="$options -OPENSSL_ROOT_DIR=${openssl_ssl_library}"
+  options="$options -DOPENSSL_SSL_LIBRARY=${openssl_ssl_library}"
   options="$options -DOPENSSL_INCLUDE_DIR=${openssl_path}/include"
-  options="$options -DOPENSSL_LIBRARIES=${openssl_ssl_library}"
+  options="$options -DOPENSSL_LIBRARIES=${openssl_ssl_library};${openssl_crypto_library}"
   options="$options -DCMAKE_BUILD_TYPE=Release"
   # options="$options -DCMAKE_C_COMPILER=/usr/local/opt/llvm/bin/clang"
   # options="$options -DCMAKE_CXX_COMPILER=/usr/local/opt/llvm/bin/clang++"
@@ -129,8 +131,8 @@ build_ios() {
   fold_end td_build
 }
 
-# build_macos
-
+build_macos
+# exit
 build_ios "0" "iOS" # &  & wait
 build_ios "1" "iOS"
 
