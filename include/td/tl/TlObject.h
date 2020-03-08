@@ -1,5 +1,5 @@
 //
-// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2019
+// Copyright Aliaksei Levin (levlam@telegram.org), Arseny Smirnov (arseny30@gmail.com) 2014-2020
 //
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
@@ -186,8 +186,8 @@ using tl_object_ptr = tl::unique_ptr<Type>;
  * \code
  * auto get_authorization_state_request = td::make_tl_object<td::td_api::getAuthorizationState>();
  * auto message_text = td::make_tl_object<td::td_api::formattedText>("Hello, world!!!",
- *                     std::vector<td::tl_object_ptr<td::td_api::textEntities>>());
- * auto send_message_request = td::make_tl_object<td::td_api::sendMessage>(chat_id, 0, false, false, nullptr,
+ *                     std::vector<td::tl_object_ptr<td::td_api::textEntity>>());
+ * auto send_message_request = td::make_tl_object<td::td_api::sendMessage>(chat_id, 0, nullptr, nullptr,
  *      td::make_tl_object<td::td_api::inputMessageText>(std::move(message_text), false, true));
  * \endcode
  *

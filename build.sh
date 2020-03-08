@@ -25,7 +25,7 @@ fold_start td_checkout "Checkout td at tag ${$TRAVIS_TAG}"
 git clone https://github.com/tdlib/td
 cd td
 # git checkout tags/$TRAVIS_TAG
-git checkout tags/v1.5.0
+git checkout tags/v1.6.0
 cd ..
 
 fold_end td_checkout
