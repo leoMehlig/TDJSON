@@ -1,4 +1,3 @@
-
 fold_start() {
   echo -e "travis_fold:start:$1\033[33;1m$2\033[0m"
 }
@@ -12,27 +11,26 @@ show_progress() {
   i=1
   sp="/-\|"
   echo -n ' '
-  while kill -0 $PID 2> /dev/null
-  do
-      printf "\b${sp:i++%${#sp}:1}"
-      sleep 300
+  while kill -0 $PID 2>/dev/null; do
+    printf "\b${sp:i++%${#sp}:1}"
+    sleep 300
   done
 }
 
-# git clone https://github.com/pybee/Python-Apple-support
-# cd Python-Apple-support
-# git checkout 2.7
-# # git checkout 60b990128d5f1f04c336ff66594574515ab56604
-# git checkout tags/2.7-b5 -b archs-all
-# cd ..
+git clone https://github.com/pybee/Python-Apple-support
+cd Python-Apple-support
+#git checkout 2.7
+#git checkout 60b990128d5f1f04c336ff66594574515ab56604
+git checkout tags/2.7-b5 -b archs-all
+cd ..
 
 platforms="macOS iOS"
-for platform in $platforms;
-do
+for platform in $platforms; do
   fold_start openssl.2 "Building OpenSSL for ${platform}"
   echo $platform
   cd Python-Apple-support
-  make OpenSSL-$platform &> /dev/null & show_progress
+  make OpenSSL-$platform &>/dev/null &
+  show_progress
   cd ..
   rm -rf third_party/openssl/$platform
   mkdir -p third_party/openssl/$platform/lib
