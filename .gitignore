@@ -72,4 +72,4 @@ fastlane/test_output
 /td
 /TDJSON.framework.zip
 /.vscode
-/third_party
+# /third_party
